@@ -21,6 +21,8 @@ RUN pnpm run build
 # ==== Backend Build Stage ====
 FROM golang:1.24.1-alpine3.21 AS backend-build
 
+RUN apk add --no-cache make
+
 WORKDIR /backend
 
 COPY backend/go.mod backend/go.sum ./
