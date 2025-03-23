@@ -2,7 +2,6 @@ package main
 
 import (
 	"embed"
-	_ "embed"
 	"io/fs"
 	"log"
 	"net/http"
@@ -27,7 +26,6 @@ const defaultPort = "8080"
 var content embed.FS
 
 func main() {
-	utils.ValidateEnv([]string{"ENV"})
 	if os.Getenv("ENV") != "production" {
 		err := godotenv.Load()
 		if err != nil {

@@ -6,7 +6,8 @@ export const useTodosQuery = () => {
   return useQuery({
     queryKey: ["todos"],
     queryFn: async () => {
-      return await request(import.meta.env.VITE_GRAPHQL_URL, GET_TODOS);
+      console.log(window.location.origin + "/query");
+      return await request(window.location.origin + "/query", GET_TODOS);
     },
   });
 };

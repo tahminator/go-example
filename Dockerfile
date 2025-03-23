@@ -33,7 +33,7 @@ COPY backend/ ./
 
 COPY --from=frontend-build /frontend/dist static/
 
-RUN make build
+RUN ENV=production && make build
 
 # === Runtime Stage ====
 FROM alpine:3.21 AS backend-runtime
@@ -46,7 +46,7 @@ COPY --from=backend-build /backend/server .
 
 EXPOSE 8080
 
-CMD ["./server"]
+CMD ["ENV=production", "&&", ./server"]
 
 
 

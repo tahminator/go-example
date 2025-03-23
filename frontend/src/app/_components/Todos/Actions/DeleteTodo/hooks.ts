@@ -14,7 +14,7 @@ export const useDeleteTodoMutation = () => {
 };
 
 const deleteTodo = async ({ id }: { id: string }) => {
-  return await request(import.meta.env.VITE_GRAPHQL_URL, DELETE_TODO, {
+  return await request(window.location.origin + "/query", DELETE_TODO, {
     todoId: id,
   });
 };

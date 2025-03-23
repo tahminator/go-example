@@ -20,7 +20,7 @@ export const useUpdateTodoMutation = () => {
       };
 
       const newTodos = previousTodos.todos.map((todo) =>
-        todo.id === newTodo.todo.id ? { ...todo, ...newTodo.todo } : todo,
+        todo.id === newTodo.todo.id ? { ...todo, ...newTodo.todo } : todo
       );
 
       queryClient.setQueryData(["todos"], () => {
@@ -44,7 +44,7 @@ export const useUpdateTodoMutation = () => {
 
 const updateTodo = async ({ todo }: { todo: Todo }) => {
   const newTodo = { ...todo, createdAt: undefined };
-  return await request(import.meta.env.VITE_GRAPHQL_URL, UPDATE_TODO, {
+  return await request(window.location.origin + "/query", UPDATE_TODO, {
     todo: newTodo,
   });
 };

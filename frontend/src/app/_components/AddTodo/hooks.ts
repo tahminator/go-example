@@ -14,7 +14,7 @@ export const useCreateTodoMutation = () => {
 };
 
 const createNewTodo = async ({ text }: { text: string }) => {
-  return await request(import.meta.env.VITE_GRAPHQL_URL, CREATE_TODO, {
+  return await request(window.location.origin + "/query", CREATE_TODO, {
     newTodo: {
       text,
     },
