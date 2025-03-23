@@ -46,7 +46,8 @@ COPY --from=backend-build /backend/server .
 
 EXPOSE 8080
 
-CMD ["ENV=production", "&&", ./server"]
+ENV ENV=production
+CMD ["./server"]
 
 
 

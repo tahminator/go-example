@@ -6,7 +6,6 @@ export const useTodosQuery = () => {
   return useQuery({
     queryKey: ["todos"],
     queryFn: async () => {
-      console.log(window.location.origin + "/query");
       return await request(window.location.origin + "/query", GET_TODOS);
     },
   });
