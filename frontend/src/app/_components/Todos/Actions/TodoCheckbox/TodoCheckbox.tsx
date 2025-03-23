@@ -14,8 +14,8 @@ export default function TodoCheckbox({ todo }: { todo: Todo }) {
         },
       },
       {
-        onSuccess: (data) => {
-          toast(`You have successfully ${data.updateTodo.text}!`);
+        onSuccess: ({ updateTodo: { text } }) => {
+          toast(`"${text} has been completed!"`);
         },
 
         onError: () => {

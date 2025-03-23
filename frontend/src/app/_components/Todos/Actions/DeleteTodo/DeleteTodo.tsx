@@ -9,13 +9,10 @@ export default function TodoDeleteButton({ id }: { id: string }) {
     mutate(
       { id },
       {
-        onSuccess: (data) => {
-          toast.success(
-            `Todo with ID of ${data.deleteTodo.id} has been deleted.`,
-            {
-              id: toastId,
-            },
-          );
+        onSuccess: ({ deleteTodo: { text } }) => {
+          toast.success(`"${text}" has been removed from the list.`, {
+            id: toastId,
+          });
         },
       },
     );

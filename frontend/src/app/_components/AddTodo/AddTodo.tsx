@@ -19,8 +19,8 @@ export default function TodoAddForm() {
     mutate(
       { text },
       {
-        onSuccess: () => {
-          toast.success("Todo successfully created!", {
+        onSuccess: ({ createTodo }) => {
+          toast.success(`"${createTodo.text}" has been added to the list!`, {
             id: toastId,
           });
           form.reset();
