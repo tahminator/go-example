@@ -27,12 +27,15 @@ const defaultPort = "8080"
 var content embed.FS
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Failed to load .env: %v", err)
+	utils.ValidateEnv([]string{"ENV"})
+	if os.Getenv("ENV") != "production" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatalf("Failed to load .env: %v", err)
+		}
 	}
 
-	utils.ValidateEnv([]string{"DATABASE_HOST", "DATABASE_PORT", "DATABASE_NAME", "DATABASE_USER", "DATABASE_PASSWORD", "ENV", "ALLOWED_ORIGINS"})
+	utils.ValidateEnv([]string{"DATABASE_HOST", "DATABASE_PORT", "DATABASE_NAME", "DATABASE_USER", "DATABASE_PASSWORD", "ALLOWED_ORIGINS"})
 
 	port := os.Getenv("PORT")
 	if port == "" {
